@@ -9,58 +9,71 @@
 <body>
 
   <script>
-var words=["Akali","Dog","dragon","Anima","Batman","Tom","Huggy Wuggy","Supercalifragilisticexpialidocious","humor", "miniature", "amusing", "creepy", "fact", "risk", "verse", "land", "lumpy", "holiday", "glorious", "weigh", "brake", "pretty", "grin", "capricious", "bite-sized", "misty", "ignore", "certain", "sloppy", "dress", "true", "zonked", "observation", "action", "various", "want", "direful", "suck", "dress", "scarecrow", "judge", "madly", "quizzical", "consist", "fierce", "love", "arrest", "serve", "fit", "hug", "tan", "curve", "eatable", "tub", "race", "innocent", "open", "preach", "steady", "acoustics", "lock", "field", "arrange", "rifle", "learned", "toe", "flow", "competition", "ill-fated", "oatmeal", "match", "male", "measure", "loaf", "smile", "wrestle", "dull", "food", "locket", "bell", "beg", "strengthen", "responsible", "enchanting", "loutish", "switch", "idea", "nine", "squeamish", "pig", "bat", "dear", "trains", "owe", "frogs", "assorted", "lonely", "hurry", "natural", "sun", "snow", "obnoxious", "broken", "friend", "bright", "cake", "sour", "permit", "economic", "lovely", "quick", "van", "tempt", "apparel", "decay", "business", "adjustment", "blushing", "makeshift", "slippery", "load", "winter", "exist", "tongue", "country", "roll", "fast", "moor", "possess", "pat", "pass", "books", "impartial", "hospitable", "dust", "naughty", "extra-large", "tacky", "produce", "committee", "fuzzy", "judicious", "nebulous", "stick", "ear", "copy", "friendly", "press", "distinct", "vegetable", "upset", "venomous", "statement", "sulky", "spell", "x-ray", "square", "taste", "great", "thumb", "adjoining", "chilly", "test", "ancient", "green", "badge", "work", "repeat", "free", "elderly", "doctor", "difficult", "grubby", "approval", "turn", "vivacious", "thundering", "cherries", "rest", "plan", "crime", "sticks", "wealthy", "phone", "suspend", "gullible", "fence", "note", "wall", "interest", "coil", "jump", "enchanted", "funny", "racial", "greasy", "polish", "elbow", "smart", "bore", "crowd", "glistening", "oval", "eggs", "nauseating", "detailed", "veil", "coal"]
-var wins = 0, losses = 0, numGuesses = 0, count = 0;
-var wordIndex = 0;
-var displayWord = [], wrongGuesses = [];
-var duplicate;
+    var words=["akali","dog","dragon","anima","batman","tom","huggy wuggy","supercalifragilisticexpialidocious","humor", "miniature", "amusing", "creepy", "fact", "risk", "verse", "land", "lumpy", "holiday", "glorious", "weigh", "brake", "pretty", "grin", "capricious", "bite-sized", "misty", "ignore", "certain", "sloppy", "dress", "true", "zonked", "observation", "action", "various", "want", "direful", "suck", "dress", "scarecrow", "judge", "madly", "quizzical", "consist", "fierce", "love", "arrest", "serve", "fit", "hug", "tan", "curve", "eatable", "tub", "race", "innocent", "open", "preach", "steady", "acoustics", "lock", "field", "arrange", "rifle", "learned", "toe", "flow", "competition", "ill-fated", "oatmeal", "match", "male", "measure", "loaf", "smile", "wrestle", "dull", "food", "locket", "bell", "beg", "strengthen", "responsible", "enchanting", "loutish", "switch", "idea", "nine", "squeamish", "pig", "bat", "dear", "trains", "owe", "frogs", "assorted", "lonely", "hurry", "natural", "sun", "snow", "obnoxious", "broken", "friend", "bright", "cake", "sour", "permit", "economic", "lovely", "quick", "van", "tempt", "apparel", "decay", "business", "adjustment", "blushing", "makeshift", "slippery", "load", "winter", "exist", "tongue", "country", "roll", "fast", "moor", "possess", "pat", "pass", "books", "impartial", "hospitable", "dust", "naughty", "extra-large", "tacky", "produce", "committee", "fuzzy", "judicious", "nebulous", "stick", "ear", "copy", "friendly", "press", "distinct", "vegetable", "upset", "venomous", "statement", "sulky", "spell", "x-ray", "square", "taste", "great", "thumb", "adjoining", "chilly", "test", "ancient", "green", "badge", "work", "repeat", "free", "elderly", "doctor", "difficult", "grubby", "approval", "turn", "vivacious", "thundering", "cherries", "rest", "plan", "crime", "sticks", "wealthy", "phone", "suspend", "gullible", "fence", "note", "wall", "interest", "coil", "jump", "enchanted", "funny", "racial", "greasy", "polish", "elbow", "smart", "bore", "crowd", "glistening", "oval", "eggs", "nauseating", "detailed", "veil", "coal"]
+    var wins = 0, losses = 0, numGuesses = 20, count = 0;
+    var wordIndex = 0;
+    var displayWord = [], wrongGuesses = [];
+    var duplicate;
 
-resetGame();
-console.log(words[wordIndex]);
-document.onkeyup = function (event) {
+    resetGame();
+    console.log(words[wordIndex]);
+    document.getElementById("word").innerHTML = displayMysteryWord();
+
+    document.onkeyup = function (event) {
     var input = event.key;
-    var temp = new RegExp(input, "gi");
-    var temp2 = words[wordIndex];
-    if(temp2.search(/[a-z]|[A-Z]/) != -1){
-        if(temp2.includes(input)){
-            duplicate = temp2.match(temp);
+    var regExp = new RegExp(input, "gi");
+    var placeholder = words[wordIndex];
+    if(placeholder.search(/[a-z]/) != -1){
+        if(placeholder.includes(input)){
+            duplicate = placeholder.match(regExp);
             for(var i = 0; i < duplicate.length; i++){
-                displayWord[temp2.indexOf(input)] = input;
-                temp2 = temp2.replace(input, " ");
+                displayWord[placeholder.indexOf(input)] = input;
+                placeholder = placeholder.replace(input, " ");
             }
         }
         else{
-            if(document.getElementById("wrongLetters").innerHTML.includes(input.toLowerCase())){
-
+            if(document.getElementById("wrongLetters").innerHTML.includes(input.toLowerCase(),14)){
             }
             else{
+                numGuesses--;
                 wrongGuesses.push(input.toLowerCase());
+                document.getElementById("wrongLetters").innerHTML = "Wrong letters: " + wrongGuesses;
             }
-            
-            document.getElementById("wrongLetters").innerHTML = "Wrong letters: " + wrongGuesses;
         }
     }
 
+                document.getElementById("word").innerHTML = displayMysteryWord();
+                console.log(input);
+                console.log(numGuesses);
+                updateGame();
+                }
 
-    document.getElementById("word").innerHTML = displayMysteryWord();
-    console.log(input);
-}
+            function updateGame(){
+                if(!(document.getElementById("word").innerHTML.includes("_"))){
+                    if(numGuesses > 0){
+                        wins++;
+                    }
+                    else{
+                        losses++;
+                    }
+                }
 
-function updateGame(){
+            function resetGame(){
+                numGuesses = 20;
+                wrongGuesses = [];
+                wordIndex = Math.floor(Math.random()*words.length);
+                for(var i = 0; i < words[wordIndex].length; i++){
+                    displayWord.push(" _ ");
+                    }
+                }
 
-}
-
-function resetGame(){
-    wordIndex = Math.floor(Math.random()*words.length);
-    for(var i = 0; i < words[wordIndex].length; i++){
-        displayWord.push(" _ ");
-    }
-}
-
-function displayMysteryWord(){
-    var output = "";
-    for(var i = 0; i < displayWord.length; i++){
-        output += displayWord[i];
-    }
-    return output;
-}
+            function displayMysteryWord(){
+                var output = "";
+                for(var i = 0; i < displayWord.length; i++){
+                    output += displayWord[i];
+                    }
+                return output;
+                }
+            }
+    </script>
+</body>
