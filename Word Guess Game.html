@@ -23,6 +23,8 @@
 </style>
 <h1 id = "question"></h1>
 <body>
+    <h1>Try to guess the Word Represented by the Underlines</h1>
+    <h3 id = "score">Score: 0</h3>
     <script>
         alert("We are going to play a guessing game!")
          alert("I, your beloved computer Micro, will think of a word. i will show you the crypted word using '_'. You must guess the word i'm thinking.")
@@ -68,9 +70,24 @@
     }
 }
 
-
-
         document.getElementById("question").innerHTML = words[count].q;
+
+        while(count > 0) {
+        if(lettUsed.includes(word[count - 1])) {}
+
+        else{
+            num += 1;
+            lettUsed += word[count - 1];
+        }
+
+        count -= 1;
+    }
+
+    return num;
+
+
+
+
 
         if(count < 19){
                 document.getElementById("question").innerHTML = listOfQuestions[count].q;
