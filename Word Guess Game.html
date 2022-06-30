@@ -50,7 +50,7 @@ var randomWords=[
         { w: "seal", a: "seal" },
         { w: "future", a: "future" }
     ]
-    document.getElementById("question").innerHTML = randomWords[count].w;
+    document.getElementById("words").innerHTML = randomWords[count].w;
 console.log(randomWords)
 
 //Create a function that keeps track of buttons pressed
@@ -61,8 +61,9 @@ document.onkeyup = function (event) {
             else{
                 alert("Please pick a letter from 'a' to 'z'. No capital letters.")}
         }
+//Create statement that loops through list until it goes through all items
         if(count < 18){
-                document.getElementById("question").innerHTML = randomWords[count].q;
+                document.getElementById("words").innerHTML = randomWords[count].w;
             }
             else{
                 alert("End of game, so take your fingers off the keys! Yes, Hawaiian Pizza is the best pizza there is. If you have anything on the contrary to say, you can take it up tp my complaint department: the trash.");
