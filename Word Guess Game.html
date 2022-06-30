@@ -67,46 +67,6 @@
         count -= 1;
     }
 }
-        document.getElementById("question").innerHTML = words[count].q;
-        document.onkeyup   = function (event) {
-        var input = event.key;
-        }
-        if(input == "t" || input == "f"){
-            if (words[count].a == input) {
-                alert("100% right!");
-                score++;
-                document.getElementById("score").innerHTML = "Score: " + score;
-            }
-            else{
-                alert("Please enter a lowercase letter from 'a' to 'z'.");
-            }
-        }
-        if(count < 18){
-                document.getElementById("question").innerHTML = words[count].q;
-        }
-       
-                while(count > 0) {
-        if(lettUsed.includes(words[count - 1])) {}
-
-        else{
-            num += 1;
-            lettUsed += words[count - 1];
-        }
-        count -= 1;
-    }
-    return num;
-
-
-
-
-
-        if(count < 19){
-                document.getElementById("question").innerHTML = listOfQuestions[count].q;
-            }
-            else{
-                alert("End of game, so take your fingers off the keys! Yes, Hawaiian Pizza is the best pizza there is. If you have anything on the contrary to say, you can take it up tp my complaint department: the trash.");
-                alert("Good Job! Your " + document.getElementById("score").innerHTML + ". You get an extra point just for playing! Refresh the page to start again!")
-               }
 
     </script>
     <iframe width="399" height="300" src="https://www.youtube.com/embed/os0rXHM1KL4" title="Gameplay Theme - Microsoft Sudoku" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
