@@ -2,7 +2,6 @@
 <html lang="en-us">
 
 <head>
-  <meta charset="UTF-8">
   <title>Word Guess Game</title>
 </head>
 <style>
@@ -27,7 +26,7 @@
     <h3 id = "score">Score: 0</h3>
     <script>
         alert("We are going to play a guessing game!")
-         alert("I, your beloved computer Micro, will think of a word. I will show you the crypted word using '_'. You must guess the word i'm thinking.")
+         alert("I, your beloved computer Micro, will think of a word. I will show you the crypted word using '_'. You must guess the word I'm thinking.")
          alert("Your letter choices will be all lower case, from 'a' to 'z'.")
          alert("If you get it right, you will get points.")
          alert("Good Luck!")
@@ -39,7 +38,6 @@
         { q: "anima", a: "anima" },
         { q: "batman", a: "batman" },
         { q: "tom", a: "tom" },
-        { q: "huggy wuggy", a: "huggy wuggy" },
         { q: "supercalifragilisticexpialidocious", a: "supercalifragilisticexpialidocious" },
         { q: "poppy", a: "poppy" },
         { q: "miniature", a: "miniature" },
@@ -55,9 +53,9 @@
     ];
     var wordGuess = [];
     var wrongGuess = [];
-    var count = 0, score = 0;
-    var raNum = Math.floor(Math.random() * 70);
-    return randomWords[raNum]
+    var score = 0;
+    var randomWords = Math.floor(Math.random(words.length));
+    return randomWords;
 
     function wordStart() {
     var wordLength = words.length;
@@ -74,8 +72,8 @@
         var input = event.key;
         }
         if(input == "t" || input == "f"){
-            if (listOfQuestions[count].a == input) {
-                alert("You must be a fan! 100% right!");
+            if (words[count].a == input) {
+                alert("100% right!");
                 score++;
                 document.getElementById("score").innerHTML = "Score: " + score;
             }
@@ -83,13 +81,16 @@
                 alert("Please enter a lowercase letter from 'a' to 'z'.");
             }
         }
-
-        while(count > 0) {
-        if(lettUsed.includes(word[count - 1])) {}
+        if(count < 18){
+                document.getElementById("question").innerHTML = words[count].q;
+        }
+       
+                while(count > 0) {
+        if(lettUsed.includes(words[count - 1])) {}
 
         else{
             num += 1;
-            lettUsed += word[count - 1];
+            lettUsed += words[count - 1];
         }
         count -= 1;
     }
