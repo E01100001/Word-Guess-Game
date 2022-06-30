@@ -57,13 +57,16 @@ console.log(randomWords)
 document.onkeyup = function (event) {
         var input = event.key;
             if(input == "a" || input == "b" || input == "c" || input == "d" || input == "e" || input == "f" || input == "g" || input == "h" || input == "i" || input == "j" || input == "k" || input == "l" || input == "m" || input == "n" || input == "o" || input == "p" || input == "q" || input == "r" || input == "s" || input == "t" || input == "u" || input == "v" || input == "w" || input == "x" || input == "y" || input == "z"){
-            console.log(input)
+            console.log(input) }
+            else{
+                alert("Please pick a letter from 'a' to 'z'. No capital letters.")}
+        }
+        if(count < 18){
+                document.getElementById("question").innerHTML = randomWords[count].q;
             }
             else{
-                alert("Please pick a letter from 'a' to 'z'. No capital letters.")
-            }
-        }
-
+                alert("End of game, so take your fingers off the keys! Yes, Hawaiian Pizza is the best pizza there is. If you have anything on the contrary to say, you can take it up tp my complaint department: the trash.");
+                    alert("Good Job! Your " + document.getElementById("score").innerHTML + ". You get an extra point just for playing! Refresh the page to start again!")}
 
 
 
