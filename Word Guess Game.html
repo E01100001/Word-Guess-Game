@@ -76,24 +76,24 @@
             choosenWord = [Math.floor(Math.random() * randomWords.length)];
 
             // 2. split the choosenWord by letter and store it in the array individualLetters hint: split()
-            individualLetters = document.getElementById("words").innerHTML = choosenWord.split(choosenWord);
+            individualLetters = document.getElementById("words").innerHTML = choosenWord.split("");
 
             // 3. store the number of blank spaces needed for the chosen word by checking individualLetters array and store in blankSpaces
-            
+            blankSpaces = document.getElementById("words").innerHTML = individualLetters
 
             // 4. loop over the amount define in blankSpaces and store a blank space "_" in fillerLetters
             for(var i = 0; i < blankSpaces.length; i++){
-                fillerLetters = fillerLetters.replace(input, "_");
+                fillerLetters = fillerLetters.replace("_");
             }
 
             // 5. grab div with id of words and change the innerHTML to be equal to fillerLetters join together hint: joint()
             document.getElementById("words").innerHTML = fillerLetters.join("");
 
             // 6. grab div with id of wrong-letters  and change the innerHTML to be equal to wrongLetters
-            document.getElementById("wrong-letters").innerHTML = "wrongLetters: " + wrongLetters;
+            document.getElementById("wrong-letters").innerHTML = "Wrong Letters: " + wrongLetters;
 
             // 7. grab div with id of available-Guesses  and change the innerHTML to be equal to availGuesses
-            document.getElementById("available-Guesses").innerHTML = "availGuesses: " + availGuesses;
+            document.getElementById("available-Guesses").innerHTML = "Available Guesses: " + availGuesses;
 
             // 8. create a function call checkLetter that has a parameter named letter 
             function checkLetter (letter){
@@ -131,7 +131,7 @@
                 //   - add letter into wrongLetters=[] hint: push()
                 wrongLetters.push(letter);
                 //   - subsatract one from availGuesses
-                availGuesses - 1;
+                availGuesses--;
                 // - end condition
             }
                 // end function
