@@ -21,108 +21,93 @@
 <body>
     <h1> Brainstorm </h1>
     <h1 id = "words"></h1>
-<script>
-//Create an opening statement
-    alert("Hi!")
-    alert("My name is Micro.")
-    alert("I have created a game just for you! Its called 'Brainstorm', AKA 'Word Guess Game'.")
-    alert("I will think of a random word, and you have to guess what word I'm thinking.")
-    alert("All words will be lower case, so you won't be using the SHIFT or CAPS key.")
-    alert("You have 18 words to guess.")
-    alert("I have also embeded a song from a very popular game called 'Sudoku'. Click on it to play it.")
-    alert("Good luck!")
+    <div id="wrong-letters"></div>
+    <div id="available-Guesses"></div>
 
-    //Create score & count
-var count = 0, score = 0; 
-
-//Create array of words
-var randomWords=[
-        { w: "_ _ _ _ _ ", a: "akali" },
-        { w: "_ _ _", a: "dog" },
-        { w: "_ _ _ _ _ _", a: "dragon" },
-        { w: "_ _ _ _ _", a: "anima" },
-        { w: "_ _ _ _ _ _", a: "batman" },
-        { w: "_ _ _", a: "tom" },
-        { w: "_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _", a: "supercalifragilisticexpialidocious" },
-        { w: "_ _ _ _ _", a: "poppy" },
-        { w: "_ _ _ _ _ _ _ _ _", a: "miniature" },
-        { w: "_ _ _ _ _ _", a: "creepy" },
-        { w: "_ _ _ _", a: "risk" },
-        { w: "_ _ _ _ _ _ _ _", a: "glorious" },
-        { w: "_ _ _ _", a: "grin" },
-        { w: "_ _ _ _ _ _", a: "itachi" },
-        { w: "_ _ _ _ _ _", a: "naruto" },
-        { w: "_ _ _ _ _ _", a: "tenten" },
-        { w: "_ _ _ _", a: "seal" },
-        { w: "_ _ _ _ _ _", a: "future" }
-    ]
-    document.getElementById("words").innerHTML = randomWords[count].w;
-    Math. random(randomWords.length)
-    console.log(randomWords)
-
-//Create a function that keeps track of buttons pressed
-document.onkeyup = function (event) {
-        var input = event.key.toLocaleLowerCase()
-        console.log(input)
-            if(input == "a" || input == "b" || input == "c" || input == "d" || input == "e" || input == "f" || input == "g" || input == "h" || input == "i" || input == "j" || input == "k" || input == "l" || input == "m" || input == "n" || input == "o" || input == "p" || input == "q" || input == "r" || input == "s" || input == "t" || input == "u" || input == "v" || input == "w" || input == "x" || input == "y" || input == "z"){
-                if (randomWords[count].a == input) {
-                    console.log(input) }
-                }
-        
-            else{
-                alert("Please pick a letter from 'a' to 'z'. No capital letters.")}
-        }
-//Create statement that loops through list until it goes through all items
-        if(count < 18){
-                document.getElementById("words").innerHTML = randomWords[count].w;
-            }
-            else{
-                alert("End of game, so take your fingers off the keys! You have sucessfully gone through each of my words.");
-                    alert("Good Job! Your " + document.getElementById("score").innerHTML + ". You get an extra point just for playing! Refresh the page to start again!")}
-
-
-//Create a place to put guessed letter
-                var guessedLetters=[]
-                var wrongLetters=[]
-                    document.write("Guessed Letters: " + guessedLetters)
-                    document.write("Wrong Letters: " + wrongLetters)
-
-
-
-
-
-
-</script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-</body>
     <iframe width="399" height="300" src="https://www.youtube.com/embed/os0rXHM1KL4" title="Gameplay Theme - Microsoft Sudoku" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-<p> <bold> <marquee direction="left">............................... Channel your inner Riddler ......... You Got This! ............. Use your Byakugan or Sharingan .......... You can do it!Believe it!........... Use your chakra and ace this thing! ......................</marquee> </bold> </p>
+    <p> <bold> <marquee direction="left">............................... Channel your inner Riddler ......... You Got This! ............. Use your Byakugan or Sharingan .......... You can do it!Believe it!........... Use your chakra and ace this thing! ......................</marquee> </bold> </p>
+    <script>
+    //Create an opening statement
+        alert("Hi!");
+        alert("My name is Micro.");
+        alert("I have created a game just for you! Its called 'Brainstorm', AKA 'Word Guess Game'.");
+        alert("I will think of a random word, and you have to guess what word I'm thinking.");
+        alert("All words will be lower case, so you won't be using the SHIFT or CAPS key.");
+        alert("You have 18 words to guess.");
+        alert("I have also embeded a song from a very popular game called 'Sudoku'. Click on it to play it.");
+        alert("Good luck!");
+        
+        //Create array of words
+        var randomWords=["akali", "dog", "dragon","anima", "batman", "tom", "supercalifragilisticexpialidocious", "poppy", "miniature", "creepy", "risk", "glorious", "grin", "itachi", "naruto", "tenten", "seal", "future"];
+        
+        //Create variables for our game
+        // var for chosen word => choosenWord = ""
+        // var for array which will store each letter individualy  => individualyLetters = []
+        // var for number of blank spaces => blankSpaces
+        // var for array containing correct guess letters and blank spaces for letters yet to be guessed => fillerLetters = []
 
+
+        var fillerLetters=[]
+        // var for the wrong letters guess so far
+        var wrongLetters=[];
+        
+        // var for wins
+        var wins = 0; 
+        // var for number of guesses left
+        var availGuesses = 26;
+
+
+        // game logic
+        // 1. pick random word from randomWords and store it in choosenWord
+        randomWords[Math.floor(Math.random() * randomWords.length)];
+        // 2. split the choosenWord by letter and store it in the array individualLetters hint: split()
+        // 3. store the number of blank spaces needed for the chosen word by checking individualLetters array and store in blankSpaces
+        // 4. loop over the amount define in blankSpaces and store a black space "_" in fillerLetters
+        // 5. grab div with id of words and change the innerHTML to be equal to fillerLetters join together hint: joint()
+        document.getElementById("words").innerHTML = fillerLetters.join("");
+        // 6. grab div with id of wrong-letters  and change the innerHTML to be equal to wrongLetters
+        // 7. grab div with id of available-Guesses  and change the innerHTML to be equal to availGuesses
+
+
+        // 8. create a function call checkLetter that has a parameter named letter 
+            // - create var that is a boolean that will be set to false if the letter is not in the individualLetters and true if it is (default false) => realLetter = (true or false)
+            // - loop over the amount define in blankSpaces
+            //   - if letter is one of the letters inside individualLetters[i] then
+            //       - store true in realLetter 
+            //   - end condition
+            // - close loop
+            // - if realLetter is true then
+            //   - loop over the amount define in blankSpaces 
+            //     - if letter is one of the letters inside individualLetters then
+            //       - grab fillerLetters at index and assign it the vlue of letter hint: fillerLetters[i] = letter
+            //     - end condition
+            //   -close loop
+            // - else
+            //   - add letter into wrongLetters=[] hint: push()
+            //   - subsatract one from availGuesses
+            // - end condition
+            // end function
+        // 9.  listen to an onkeyup event then
+        document.onkeyup = function (event) {
+            // code here
+            // 10.  store letter input inside a var call input
+            var input = event.key.toLocaleLowerCase();
+                
+            // 11. call the  checkLetter function and pass in the input as an argument
+            // 12. grab div with id of wrong-letters  and change the innerHTML to be equal to wrongLetters
+            // 13. grab div with id of available-Guesses  and change the innerHTML to be equal to availGuesses
+            // 14. grab div with id of words and change the innerHTML to be equal to fillerLetters join together hint: joint()
+            document.getElementById("words").innerHTML = fillerLetters.join("");
+            // 15. end event listener
+              
+        }
+
+
+
+        // alert("End of game, so take your fingers off the keys! You have sucessfully gone through each of my words.");
+        // alert("Good Job! Your " + document.getElementById("score").innerHTML + ". You get an extra point just for playing! Refresh the page to start again!")}
+    </script>
+
+</body>
 </html>
