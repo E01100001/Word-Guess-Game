@@ -129,7 +129,7 @@
                 // end function
         }
             // 9.  listen to an onkeyup event then
-            document.onkeyup(/^[A-Za-z]+$/) = function (event) {
+            document.onkeyup = function (event) {
                 availGuesses--
                 // 10.  store letter input inside a var call input
                 var input = event.key.toLocaleLowerCase();
