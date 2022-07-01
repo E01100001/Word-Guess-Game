@@ -52,7 +52,7 @@ var randomWords=[
         { w: "_ _ _ _ _ _", a: "future" }
     ]
     document.getElementById("words").innerHTML = randomWords[count].w;
-console.log(randomWords)
+    console.log(randomWords)
 
 //Create a function that keeps track of buttons pressed
 document.onkeyup = function (event) {
@@ -74,7 +74,33 @@ document.onkeyup = function (event) {
                     alert("Good Job! Your " + document.getElementById("score").innerHTML + ". You get an extra point just for playing! Refresh the page to start again!")}
 
 
-
+//Create a place to put guessed letter
+                var guessedLetters=[] 
+                document.write("Guessed Letters: " + guessedLetters)
+                userGuess=prompt("What letter do you guess?")
+                    if (userGuess === "a"){
+                        array_push(userGuess)
+                    } 
+                    if (userGuess === "drive around the world"){
+                        array_push()
+                    } 
+                    if (userGuess === "get tune up"){
+                        array_push()
+                    }
+                    
+                    if (userGuess === "honk"){
+                        array_push()
+                    }
+                    if (userGuess === "drive around the world"){
+                        array_push()
+                    } 
+                    if (userGuess === "get tune up"){
+                        array_push()
+                    }
+                    
+                    if (userGuess === "honk"){
+                        array_push()
+                    }
 
 
 
