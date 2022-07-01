@@ -68,7 +68,7 @@
             choosenWord = [Math.floor(Math.random() * randomWords.length)];
 
             // 2. split the choosenWord by letter and store it in the array individualLetters hint: split()
-            individualLetters = document.getElementById("words").innerHTML = choosenWord.split(" ");
+            individualLetters = document.getElementById("words").innerHTML = choosenWord.split("");
 
             // 3. store the number of blank spaces needed for the chosen word by checking individualLetters array and store in blankSpaces
             
@@ -123,7 +123,7 @@
                 //   - add letter into wrongLetters=[] hint: push()
                 wrongLetters.push(letter);
                 //   - subsatract one from availGuesses
-                availGuesses--;
+                availGuesses-1;
                 // - end condition
             }
                 // end function
