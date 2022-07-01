@@ -71,10 +71,13 @@
             individualLetters = document.getElementById("words").innerHTML = choosenWord.split("");
 
             // 3. store the number of blank spaces needed for the chosen word by checking individualLetters array and store in blankSpaces
+            blankSpaces(individualLetters)
 
-
-            // 4. loop over the amount define in blankSpaces and store a black space "_" in fillerLetters
-
+            // 4. loop over the amount define in blankSpaces and store a blank space "_" in fillerLetters
+            for(var i = 0; i < duplicate.length; i++){
+                displayWord[placeholder.indexOf(input)] = input;
+                placeholder = placeholder.replace(input, " ");
+            }
 
             // 5. grab div with id of words and change the innerHTML to be equal to fillerLetters join together hint: joint()
             document.getElementById("words").innerHTML = fillerLetters.join("");
