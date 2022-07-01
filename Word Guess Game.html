@@ -51,21 +51,20 @@ var randomWords=[
         { w: "_ _ _ _", a: "seal" },
         { w: "_ _ _ _ _ _", a: "future" }
     ]
-
-//create a function that goes through the list at random
-    Math. random(randomWords.length)
-
-//Create places to put wrong letters
-    var displayWord = [], wrongGuesses = [];
-    document.getElementById("wrongLetters").innerHTML = "Wrong letters: " + wrongGuesses;
-    
     document.getElementById("words").innerHTML = randomWords[count].w;
-    console.log(randomWords)
+console.log(randomWords)
 
 //Create a function that keeps track of buttons pressed
-console.log(onkeypress)
+document.onkeyup = function (event) {
+        var input = event.key;
+            if(input == "a" || input == "b" || input == "c" || input == "d" || input == "e" || input == "f" || input == "g" || input == "h" || input == "i" || input == "j" || input == "k" || input == "l" || input == "m" || input == "n" || input == "o" || input == "p" || input == "q" || input == "r" || input == "s" || input == "t" || input == "u" || input == "v" || input == "w" || input == "x" || input == "y" || input == "z"){
+                if (randomWords[count].a == input) {
+                    console.log(input) }
+                }
         
-            
+            else{
+                alert("Please pick a letter from 'a' to 'z'. No capital letters.")}
+        }
 //Create statement that loops through list until it goes through all items
         if(count < 18){
                 document.getElementById("words").innerHTML = randomWords[count].w;
@@ -99,8 +98,7 @@ console.log(onkeypress)
 
 
 
-else{
-    alert("Please pick a letter from 'a' to 'z'. No capital letters.")}
+
 
 
 
