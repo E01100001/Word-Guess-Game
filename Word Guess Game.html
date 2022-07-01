@@ -65,7 +65,7 @@
 
         // game logic
             // 1. pick random word from randomWords and store it in choosenWord
-            choosenWord[Math.floor(Math.random() * randomWords.length)];
+            choosenWord = [Math.floor(Math.random() * randomWords.length)];
 
             // 2. split the choosenWord by letter and store it in the array individualLetters hint: split()
             individualLetters = document.getElementById("words").innerHTML = choosenWord.split(choosenWord);
@@ -136,6 +136,16 @@
 
                 // 11. call the  checkLetter function and pass in the input as an argument
                 checkLetter(input)
+
+
+                if(availGuesses == 0){
+                    alert("End of game, so take your fingers off the keys!")
+                    document.write(choosenWord);
+                }
+
+
+
+
 
                 // 12. grab div with id of wrong-letters  and change the innerHTML to be equal to wrongLetters
                 document.getElementById("wrong-letters").innerHTML = "Wrong Letters: " + wrongLetters;
