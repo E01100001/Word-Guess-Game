@@ -38,75 +38,80 @@
         alert("I have also embeded a song from a very popular game called 'Sudoku'. Click on it to play it.");
         alert("Good luck!");
         
-        //Create array of words
-        var randomWords=["akali", "dog", "dragon","anima", "batman", "tom", "supercalifragilisticexpialidocious", "poppy", "miniature", "creepy", "risk", "glorious", "grin", "itachi", "naruto", "tenten", "seal", "future"];
-        
         //Create variables for our game
-        // var for chosen word => choosenWord = ""
-        // var for array which will store each letter individualy  => individualyLetters = []
-        // var for number of blank spaces => blankSpaces
-        // var for array containing correct guess letters and blank spaces for letters yet to be guessed => fillerLetters = []
+                    //Create array of words
+                     var randomWords=["akali", "dog", "dragon","anima", "batman", "tom", "supercalifragilisticexpialidocious", "poppy", "miniature", "creepy", "risk", "glorious", "grin", "itachi", "naruto", "tenten", "seal", "future"];
 
+                     // var for chosen word => choosenWord = ""
+                     var choosenWord = ""
 
-        var fillerLetters=[]
-        // var for the wrong letters guess so far
-        var wrongLetters=[];
-        
-        // var for wins
-        var wins = 0; 
-        // var for number of guesses left
-        var availGuesses = 26;
+                     // var for array which will store each letter individualy  => individualyLetters = []
+                     var individualyLetters = []
+
+                     // var for number of blank spaces => blankSpaces = ""
+                     var blankSpaces = ""
+
+                     // var for array containing correct guess letters and blank spaces for letters yet to be guessed => fillerLetters = []
+                     var fillerLetters = []
+
+                     // var for the wrong letters guess so far
+                     var wrongLetters=[];
+                        
+                     // var for wins
+                        var wins = 0; 
+                     // var for number of guesses left
+                        var availGuesses = 26;
 
 
         // game logic
-        // 1. pick random word from randomWords and store it in choosenWord
-        randomWords[Math.floor(Math.random() * randomWords.length)];
-        // 2. split the choosenWord by letter and store it in the array individualLetters hint: split()
-        // 3. store the number of blank spaces needed for the chosen word by checking individualLetters array and store in blankSpaces
-        // 4. loop over the amount define in blankSpaces and store a black space "_" in fillerLetters
-        // 5. grab div with id of words and change the innerHTML to be equal to fillerLetters join together hint: joint()
-        document.getElementById("words").innerHTML = fillerLetters.join("");
-        // 6. grab div with id of wrong-letters  and change the innerHTML to be equal to wrongLetters
-        // 7. grab div with id of available-Guesses  and change the innerHTML to be equal to availGuesses
-
-
-        // 8. create a function call checkLetter that has a parameter named letter 
-            // - create var that is a boolean that will be set to false if the letter is not in the individualLetters and true if it is (default false) => realLetter = (true or false)
-            // - loop over the amount define in blankSpaces
-            //   - if letter is one of the letters inside individualLetters[i] then
-            //       - store true in realLetter 
-            //   - end condition
-            // - close loop
-            // - if realLetter is true then
-            //   - loop over the amount define in blankSpaces 
-            //     - if letter is one of the letters inside individualLetters then
-            //       - grab fillerLetters at index and assign it the vlue of letter hint: fillerLetters[i] = letter
-            //     - end condition
-            //   -close loop
-            // - else
-            //   - add letter into wrongLetters=[] hint: push()
-            //   - subsatract one from availGuesses
-            // - end condition
-            // end function
-        // 9.  listen to an onkeyup event then
-        document.onkeyup = function (event) {
-            // code here
-            // 10.  store letter input inside a var call input
-            var input = event.key.toLocaleLowerCase();
-                
-            // 11. call the  checkLetter function and pass in the input as an argument
-            // 12. grab div with id of wrong-letters  and change the innerHTML to be equal to wrongLetters
-            // 13. grab div with id of available-Guesses  and change the innerHTML to be equal to availGuesses
-            // 14. grab div with id of words and change the innerHTML to be equal to fillerLetters join together hint: joint()
+            // 1. pick random word from randomWords and store it in choosenWord
+            randomWords[Math.floor(Math.random() * randomWords.length)];
+            // 2. split the choosenWord by letter and store it in the array individualLetters hint: split()
+            // 3. store the number of blank spaces needed for the chosen word by checking individualLetters array and store in blankSpaces
+            // 4. loop over the amount define in blankSpaces and store a black space "_" in fillerLetters
+            // 5. grab div with id of words and change the innerHTML to be equal to fillerLetters join together hint: joint()
             document.getElementById("words").innerHTML = fillerLetters.join("");
-            // 15. end event listener
-              
-        }
+            // 6. grab div with id of wrong-letters  and change the innerHTML to be equal to wrongLetters
+            // 7. grab div with id of available-Guesses  and change the innerHTML to be equal to availGuesses
+
+
+            // 8. create a function call checkLetter that has a parameter named letter 
+                // - create var that is a boolean that will be set to false if the letter is not in the individualLetters and true if it is (default false) => realLetter = (true or false)
+                // - loop over the amount define in blankSpaces
+                //   - if letter is one of the letters inside individualLetters[i] then
+                //       - store true in realLetter 
+                //   - end condition
+                // - close loop
+                // - if realLetter is true then
+                //   - loop over the amount define in blankSpaces 
+                //     - if letter is one of the letters inside individualLetters then
+                //       - grab fillerLetters at index and assign it the vlue of letter hint: fillerLetters[i] = letter
+                //     - end condition
+                //   -close loop
+                // - else
+                //   - add letter into wrongLetters=[] hint: push()
+                //   - subsatract one from availGuesses
+                // - end condition
+                // end function
+            // 9.  listen to an onkeyup event then
+            document.onkeyup = function (event) {
+                // code here
+                // 10.  store letter input inside a var call input
+                var input = event.key.toLocaleLowerCase();
+
+                // 11. call the  checkLetter function and pass in the input as an argument
+                // 12. grab div with id of wrong-letters  and change the innerHTML to be equal to wrongLetters
+                // 13. grab div with id of available-Guesses  and change the innerHTML to be equal to availGuesses
+                // 14. grab div with id of words and change the innerHTML to be equal to fillerLetters join together hint: joint()
+                document.getElementById("words").innerHTML = fillerLetters.join("");
+                // 15. end event listener
+                
+            }
 
 
 
-        // alert("End of game, so take your fingers off the keys! You have sucessfully gone through each of my words.");
-        // alert("Good Job! Your " + document.getElementById("score").innerHTML + ". You get an extra point just for playing! Refresh the page to start again!")}
+            // alert("End of game, so take your fingers off the keys! You have sucessfully gone through each of my words.");
+            // alert("Good Job! Your " + document.getElementById("score").innerHTML + ". You get an extra point just for playing! Refresh the page to start again!")}
     </script>
 
 </body>
