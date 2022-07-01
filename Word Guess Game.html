@@ -71,7 +71,7 @@
 
         // game logic
             // 1. pick random word from randomWords and store it in choosenWord
-            choosenWord[Math.floor(Math.random() * randomWords.length)];
+            choosenWord = [Math.floor(Math.random() * randomWords.length)];
 
             // 2. split the choosenWord by letter and store it in the array individualLetters hint: split()
             individualLetters = document.getElementById("words").innerHTML = choosenWord.split(choosenWord);
