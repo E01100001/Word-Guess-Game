@@ -71,7 +71,7 @@
             individualLetters = document.getElementById("words").innerHTML = choosenWord.split(choosenWord);
 
             // 3. store the number of blank spaces needed for the chosen word by checking individualLetters array and store in blankSpaces
-            blankSpaces = blankSpaces(individualLetters)
+            
 
             // 4. loop over the amount define in blankSpaces and store a blank space "_" in fillerLetters
             for(var i = 0; i < blankSpaces.length; i++){
@@ -82,10 +82,10 @@
             document.getElementById("words").innerHTML = fillerLetters.join("");
 
             // 6. grab div with id of wrong-letters  and change the innerHTML to be equal to wrongLetters
-            document.getElementById("wrong-letters").innerHTML = wrongLetters;
+            document.getElementById("wrong-letters").innerHTML = "wrongLetters: " + wrongLetters;
 
             // 7. grab div with id of available-Guesses  and change the innerHTML to be equal to availGuesses
-            document.getElementById("available-Guesses").innerHTML = availGuesses;
+            document.getElementById("available-Guesses").innerHTML = "availGuesses: " + availGuesses;
 
             // 8. create a function call checkLetter that has a parameter named letter 
             function checkLetter (letter){
@@ -94,7 +94,7 @@
                 var realLetter = "";
 
                 // - loop over the amount define in blankSpaces
-                blankSpaces.length
+                var i = 0; i < blankSpaces.length; i++
                 //   - if letter is one of the letters inside individualLetters[i] then
                 if (letter == individualLetters[i]){
                 //    - store true in realLetter
@@ -138,10 +138,10 @@
                 checkLetter(input)
 
                 // 12. grab div with id of wrong-letters  and change the innerHTML to be equal to wrongLetters
-                document.getElementById("wrong-letters").innerHTML = wrongLetters;
+                document.getElementById("wrong-letters").innerHTML = "wrongLetters: " + wrongLetters;
 
                 // 13. grab div with id of available-Guesses  and change the innerHTML to be equal to availGuesses
-                document.getElementById("available-Guesses").innerHTML = availGuesses;
+                document.getElementById("available-Guesses").innerHTML = "availGuesses: " + availGuesses;
 
                 // 14. grab div with id of words and change the innerHTML to be equal to fillerLetters join together hint: joint()
                 document.getElementById("words").innerHTML = fillerLetters.join("");
