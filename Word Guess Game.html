@@ -58,6 +58,7 @@
             individualLetters = document.getElementById("words").innerHTML = choosenWord.split(choosenWord);
 
             // 3. store the number of blank spaces needed for the chosen word by checking individualLetters array and store in blankSpaces
+            blankSpaces = individualLetters.length;
             
             // 4. loop over the amount define in blankSpaces and store a blank space "_" in fillerLetters
             for(var i = 0; i < blankSpaces.length; i++){
@@ -107,7 +108,7 @@
                 else{
                 //   - add letter into wrongLetters=[] hint: push()
                 wrongLetters.push(letter);
-                
+
                 //   - subsatract one from availGuesses
                 availGuesses - 1;
                 // - end condition
