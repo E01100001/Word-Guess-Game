@@ -50,6 +50,9 @@
                         var wins = 0; 
                      // var for number of guesses left
                         var availGuesses = 26;
+                        if(availGuesses = 0){
+                            alert("You have ran out of guesses. Here is the answer:")
+                        }
         // game logic
             // 1. pick random word from randomWords and store it in choosenWord
             choosenWord[Math.floor(Math.random() * randomWords.length)];
