@@ -28,7 +28,7 @@
         alert("I have created a game just for you! Its called 'Brainstorm', AKA 'Word Guess Game'.");
         alert("I will think of a random word, and you have to guess what word I'm thinking.");
         alert("All words will be lower case, so you won't be using the SHIFT or CAPS key.");
-        alert("You have 5 words to guess.");
+        alert("You have 18 words to guess.");
         alert("I have also embeded a song from a very popular game called 'Sudoku'. Click on it to play it.");
         alert("Good luck!");
         
@@ -50,17 +50,16 @@
                         var wins = 0; 
                      // var for number of guesses left
                         var availGuesses = 26;
-
         // game logic
             // 1. pick random word from randomWords and store it in choosenWord
-           choosenWord = Math.floor(Math.random() * randomWords.length);
+            choosenWord[Math.floor(Math.random() * randomWords.length)];
             // 2. split the choosenWord by letter and store it in the array individualLetters hint: split()
-            individualLetters = choosenWord.split("");
+            individualLetters = document.getElementById("words").innerHTML = choosenWord.split(choosenWord);
             // 3. store the number of blank spaces needed for the chosen word by checking individualLetters array and store in blankSpaces
-            blankSpaces = individualLetters.length
+            
             // 4. loop over the amount define in blankSpaces and store a blank space "_" in fillerLetters
-            for(var i = 0; i < blankSpaces.length[i];){
-                fillerLetters = blankSpaces.length[i].push("_");
+            for(var i = 0; i < blankSpaces.length; i++){
+                fillerLetters = fillerLetters.replace(input, "_");
             }
             // 5. grab div with id of words and change the innerHTML to be equal to fillerLetters join together hint: joint()
             document.getElementById("words").innerHTML = fillerLetters.join("");
@@ -76,9 +75,9 @@
             // 8. create a function call checkLetter that has a parameter named letter 
             function checkLetter (letter){
                 // - create var realLetter that is a boolean that will be set to false if the letter is not in the individualLetters and true if it is (default false) = (true or false)
-                var realLetter = Boolean(false);
+                var realLetter = "";
                 // - loop over the amount define in blankSpaces
-                for(var i = 0; i < blankSpaces.length[i];){
+                var i = 0; i < blankSpaces.length; i++
                 //   - if letter is one of the letters inside individualLetters[i] then
                 if (letter == individualLetters[i]){
                 //    - store true in realLetter
@@ -88,7 +87,7 @@
                 // - if realLetter is true then
                 if (realLetter = true){
                 //   - loop over the amount define in blankSpaces
-                for(var i = 0; i < blankSpaces.length[i];){
+                    blankSpaces.length[i];
                 } 
                 //     - if letter is one of the letters inside individualLetters then
                 if (letter == individualLetters[i]){
@@ -102,12 +101,10 @@
                 wrongLetters.push(letter);
                 //   - subsatract one from availGuesses
                 availGuesses - 1;
-                }
                 // - end condition
             }
                 // end function
         }
-    }
             // 9.  listen to an onkeyup event then
             document.onkeyup = function (event) {
                 availGuesses--
