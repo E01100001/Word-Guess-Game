@@ -80,7 +80,7 @@
                 // - loop over the amount define in blankSpaces
                 for(var i = 0; i < blankSpaces.length[i];){
                 //   - if letter is one of the letters inside individualLetters[i] then
-                if (checkLetter == individualLetters[i]){
+                if (letter == individualLetters[i]){
                 //    - store true in realLetter
                 realLetter = true;
                 // - close loop
@@ -91,7 +91,7 @@
                 for(var i = 0; i < blankSpaces.length[i];){
                 } 
                 //     - if letter is one of the letters inside individualLetters then
-                if (checkLetter == individualLetters){
+                if (letter == individualLetters[i]){
                 //       - grab fillerLetters at index and assign it the vlue of letter hint: fillerLetters[i] = letter
                 fillerLetters[i] = letter;
                 //     - end condition
@@ -109,7 +109,7 @@
         }
     }
             // 9.  listen to an onkeyup event then
-            console.log(document.onkeyup = function (event) {
+            document.onkeyup = function (event) {
                 availGuesses--
                 // 10.  store letter input inside a var call input
                 var input = event.key.toLocaleLowerCase();
@@ -124,7 +124,6 @@
                 // 15. end event listener
                 
             }
-            )
             // alert("End of game, so take your fingers off the keys! You have sucessfully gone through each of my words.");
             // alert("Good Job! Your " + document.getElementById("score").innerHTML + ". You get an extra point just for playing! Refresh the page to start again!")
     </script>
