@@ -58,8 +58,7 @@
             individualLetters = document.getElementById("words").innerHTML = choosenWord.split(choosenWord);
 
             // 3. store the number of blank spaces needed for the chosen word by checking individualLetters array and store in blankSpaces
-                    ///???????????
-
+            
             // 4. loop over the amount define in blankSpaces and store a blank space "_" in fillerLetters
             for(var i = 0; i < blankSpaces.length; i++){
                 fillerLetters = fillerLetters.replace(input, "_");
@@ -80,7 +79,7 @@
                 var realLetter = "";
 
                 // - loop over the amount define in blankSpaces
-                for (var i = 0; i < blankSpaces.length; i++){
+                var i = 0; i < blankSpaces.length; i++
 
                 //   - if letter is one of the letters inside individualLetters[i] then
                 if (letter == individualLetters[i]){
@@ -94,13 +93,13 @@
                 if (realLetter = true){
 
                 //   - loop over the amount define in blankSpaces
-                    blankSpaces.length;
+                    blankSpaces.length[i];
                 } 
                 //     - if letter is one of the letters inside individualLetters then
-                if (letter == individualLetters.length){
+                if (letter == individualLetters[i]){
 
                 //       - grab fillerLetters at index and assign it the vlue of letter hint: fillerLetters[i] = letter
-                fillerLetters.length = letter;
+                fillerLetters[i] = letter;
 
                 //     - end condition
                 }
@@ -108,7 +107,7 @@
                 else{
                 //   - add letter into wrongLetters=[] hint: push()
                 wrongLetters.push(letter);
-
+                
                 //   - subsatract one from availGuesses
                 availGuesses - 1;
                 // - end condition
@@ -135,8 +134,8 @@
                 document.getElementById("words").innerHTML = fillerLetters.join("");
                 
                 // 15. end event listener
+                
             }
-        }
             // alert("End of game, so take your fingers off the keys! You have sucessfully gone through each of my words.");
             // alert("Good Job! Your " + document.getElementById("score").innerHTML + ". You get an extra point just for playing! Refresh the page to start again!")
     </script>
