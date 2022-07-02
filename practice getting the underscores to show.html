@@ -22,124 +22,95 @@
     <iframe width="399" height="300" src="https://www.youtube.com/embed/os0rXHM1KL4" title="Gameplay Theme - Microsoft Sudoku" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     <p> <bold> <marquee direction="left">............................... Channel your inner Riddler ......... You Got This! ............. Use your Byakugan or Sharingan .......... You can do it!Believe it!........... Use your chakra and ace this thing! ......................</marquee> </bold> </p>
     <script>
-            //Create array of words
-                     var randomWords=["akali", "dog", "dragon","anima", "supercalifragilisticexpialidocious"]
-                    
-                     // var for chosen word => choosenWord = ""
-                     var choosenWord = ""
+            var words = ["galaxy", "stars", "andromeda", "milkyway", "jupiter", "interstellar",
+"absent", "solarsystem", "asteroid", "neptune", "mars", "earth",
+"mercury", "venus", "pluto", "uranus", "saturn", "sun",
+"dwarf", "comet", "planet", "rocket", "quasar", "alien", "apollo",
+"neutron", "satellite", "lightyear", "parsec", "astronomy"];
 
-                     // var for array which will store each letter individualy  => individualyLetters = []
-                     var individualyLetters = []
+var wins = 0, losses = 0, numGuesses = 20, count = 0, starNum = 1;
+var wordIndex = 0;
+var displayWord = [], wrongGuesses = [];
+var duplicate;
 
-                     // var for number of blank spaces => blankSpaces = ""
-                     var blankSpaces = ""
+resetGame();
+console.log(words[wordIndex]);
+document.getElementById("word").innerHTML = displayMysteryWord();
 
-                     // var for array containing correct guess letters and blank spaces for letters yet to be guessed => fillerLetters = []
-                     var fillerLetters = []
-
-                     // var for the wrong letters guess so far
-                     var wrongLetters=[];
-                        
-                     // var for wins
-                        var wins = 0; 
-
-                     // var for number of guesses left
-                        var availGuesses = 26;
-
-            // 1. pick random word from randomWords and store it in choosenWord
-            choosenWord = Math.floor(Math.random() * randomWords.length);
-            console.log(choosenWord);
-
-            // 2. split the choosenWord by letter and store it in the array individualLetters hint: split()
-            individualLetters = choosenWord.split("");
-            console.log(individualLetters);
-
-            // 3. store the number of blank spaces needed for the chosen word by checking individualLetters array and store in blankSpaces
-            (blankSpaces = individualLetters.length);
-            console.log(blankSpaces);
-
-            // 4. loop over the amount define in blankSpaces and store a blank space "_" in fillerLetters
-            for(var i = 0; i < blankSpaces.length[i];){
-                fillerLetters = blankSpaces.length[i].push("_");
+document.onkeyup = function (event) {
+    var input = event.key;
+    var regExp = new RegExp(input, "gi");
+    var placeholder = words[wordIndex];
+    if(placeholder.search(/[a-z]|[A-Z]/) != -1){
+        if(placeholder.includes(input.toLowerCase())){
+            duplicate = placeholder.match(regExp);
+            for(var i = 0; i < duplicate.length; i++){
+                displayWord[placeholder.indexOf(input.toLowerCase())] = input.toLowerCase();
+                placeholder = placeholder.replace(input.toLowerCase(), " ");
             }
-            console.log(fillerLetters);
+        }
+        else{
+            if(document.getElementById("wrongLetters").innerHTML.includes(input.toLowerCase(),14)){
 
-            // 5. grab div with id of words and change the innerHTML to be equal to fillerLetters join together hint: joint()
-            document.getElementById("words").innerHTML = fillerLetters.join("");
-
-            // 6. grab div with id of wrong-letters  and change the innerHTML to be equal to wrongLetters
-            document.getElementById("wrong-letters").innerHTML = "Wrong Letters: " + wrongLetters;
-
-            // 7. grab div with id of available-Guesses  and change the innerHTML to be equal to availGuesses
-            document.getElementById("available-Guesses").innerHTML = "Available Guesses: " + availGuesses;
-
-            // 8. create a function call checkLetter that has a parameter named letter 
-            function checkLetter (letter){
-
-                // - create var realLetter that is a boolean that will be set to false if the letter is not in the individualLetters and true if it is (default false) = (true or false)
-                var realLetter = Boolean(false);
-
-                // - loop over the amount define in blankSpaces
-                for(var i = 0; i < blankSpaces.length[i];){
-               
-                //   - if letter is one of the letters inside individualLetters[i] then
-                    if (letter == individualLetters[i]){
-
-                //    - store true in realLetter
-                realLetter = true;
-                    }
-
-                // - close loop
-                }
-                // - if realLetter is true then
-                if (realLetter = true){
-
-                //   - loop over the amount define in blankSpaces
-                for(var i = 0; i < blankSpaces.length[i];){
-
-                //     - if letter is one of the letters inside individualLetters then
-                if (letter == individualLetters[i]){
-
-                //       - grab fillerLetters at index and assign it the vlue of letter hint: fillerLetters[i] = letter
-                fillerLetters[i] = letter;
-
-                //     - end condition
-                }
-                // - else
-                else{
-                //   - add letter into wrongLetters=[] hint: push()
-                wrongLetters.push(letter);
-
-                //   - subsatract one from availGuesses
-                availGuesses - 1;
-                }
-                // - end condition
             }
-                // end function
+            else{
+                numGuesses--;
+                wrongGuesses.push(input.toLowerCase());
+                document.getElementById("wrongLetters").innerHTML = "Wrong letters: " + wrongGuesses;
+                var temp = "star" + starNum;
+                document.getElementById(temp).style.visibility = "hidden";
+                starNum++;
+                alert("A star slowly grows colder until it is devoid of all light...")
+            }
         }
     }
-            // 9.  listen to an onkeyup event then
-            document.onkeyup = function (event) {
-                availGuesses-1
-                // 10.  store letter input inside a var call input
-                var input = event.key.toLocaleLowerCase();
 
-                // 11. call the  checkLetter function and pass in the input as an argument
-                console.log(checkLetter(input));
+    updateGame();
+}
 
-                // 12. grab div with id of wrong-letters  and change the innerHTML to be equal to wrongLetters
-                document.getElementById("wrong-letters").innerHTML = "Wrong Letters: " + wrongLetters;
+function updateGame(){
+    document.getElementById("word").innerHTML = displayMysteryWord();
+    setTimeout
+    if(numGuesses <= 0){
+        losses++
+        alert("An entire galaxy has been lost...");
+        resetGame();
+    }
+    if(!(document.getElementById("word").innerHTML.includes("_"))){
+        if(numGuesses > 0){
+            wins++;
+            alert("You saved this galaxy from doom!");
+            resetGame();
+        }
+    }
+    document.getElementById("word").innerHTML = displayMysteryWord();
+    document.getElementById("Wins").innerHTML = "Wins: " + wins;
+    document.getElementById("Losses").innerHTML = "Losses: " + losses;
+    document.getElementById("guessesLeft").innerHTML = "Guesses Left: " + numGuesses;
+}
 
-                // 13. grab div with id of available-Guesses  and change the innerHTML to be equal to availGuesses
-                document.getElementById("available-Guesses").innerHTML = "Available Guesses: " + availGuesses;
+function resetGame(){
+    numGuesses = 10;
+    wrongGuesses = [], displayWord = [];
+    document.getElementById("wrongLetters").innerHTML = "Wrong letters: " + wrongGuesses;
+    wordIndex = Math.floor(Math.random()*words.length);
+    for(var i = 0; i < words[wordIndex].length; i++){
+        displayWord.push(" _ ");
+    }
+    for(var i = 1; i <= 10; i++){
+        var temp = "star" + i;
+        document.getElementById(temp).style.visibility = "visible";
+    }
+    starNum = 1;
+}
 
-                // 14. grab div with id of words and change the innerHTML to be equal to fillerLetters join together hint: joint()
-                document.getElementById("words").innerHTML = fillerLetters.join("");
-
-                // 15. end event listener
-                
-            }
-                   
+function displayMysteryWord(){
+    var output = "";
+    for(var i = 0; i < displayWord.length; i++){
+        output += displayWord[i];
+    }
+    return output;
+}
     </script>
 </body>
 </html>
