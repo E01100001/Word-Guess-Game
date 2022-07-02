@@ -109,7 +109,7 @@
         }
     }
             // 9.  listen to an onkeyup event then
-            document.onkeyup = function (event) {
+            console.log(document.onkeyup = function (event) {
                 availGuesses--
                 // 10.  store letter input inside a var call input
                 var input = event.key.toLocaleLowerCase();
@@ -124,6 +124,7 @@
                 // 15. end event listener
                 
             }
+            )
             // alert("End of game, so take your fingers off the keys! You have sucessfully gone through each of my words.");
             // alert("Good Job! Your " + document.getElementById("score").innerHTML + ". You get an extra point just for playing! Refresh the page to start again!")
     </script>
