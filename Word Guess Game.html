@@ -80,7 +80,7 @@
                 var realLetter = "";
 
                 // - loop over the amount define in blankSpaces
-                var i = 0; i < blankSpaces.length; i++
+                for (var i = 0; i < blankSpaces.length; i++){
 
                 //   - if letter is one of the letters inside individualLetters[i] then
                 if (letter == individualLetters[i]){
@@ -138,8 +138,8 @@
                 document.getElementById("words").innerHTML = fillerLetters.join("");
                 
                 // 15. end event listener
-                
             }
+        }
             // alert("End of game, so take your fingers off the keys! You have sucessfully gone through each of my words.");
             // alert("Good Job! Your " + document.getElementById("score").innerHTML + ". You get an extra point just for playing! Refresh the page to start again!")
     </script>
