@@ -58,12 +58,13 @@
                         var availGuesses = 26;
         // game logic
             // 1. pick random word from randomWords and store it in choosenWord
-            choosenWord[Math.floor(Math.random() * randomWords.length)];
+            choosenWord = Math.floor(Math.random() * randomWords.length);
 
             // 2. split the choosenWord by letter and store it in the array individualLetters hint: split()
             individualLetters = document.getElementById("words").innerHTML = choosenWord.split(choosenWord);
 
             // 3. store the number of blank spaces needed for the chosen word by checking individualLetters array and store in blankSpaces
+            
             
             // 4. loop over the amount define in blankSpaces and store a blank space "_" in fillerLetters
             for(var i = 0; i < blankSpaces.length; i++){
@@ -82,7 +83,7 @@
 
             // 8. create a function call checkLetter that has a parameter named letter 
             function checkLetter (letter){
-                
+
                 // - create var realLetter that is a boolean that will be set to false if the letter is not in the individualLetters and true if it is (default false) = (true or false)
                 var realLetter = "";
 
