@@ -22,12 +22,43 @@
     <iframe width="399" height="300" src="https://www.youtube.com/embed/os0rXHM1KL4" title="Gameplay Theme - Microsoft Sudoku" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     <p> <bold> <marquee direction="left">............................... Channel your inner Riddler ......... You Got This! ............. Use your Byakugan or Sharingan .......... You can do it!Believe it!........... Use your chakra and ace this thing! ......................</marquee> </bold> </p>
     <script>
-            var randomWords=["akali", "dog", "dragon","anima", "supercalifragilisticexpialidocious"]
+            //Create array of words
+                     var randomWords=["akali", "dog", "dragon","anima", "supercalifragilisticexpialidocious"]
+                    
+                     // var for chosen word => choosenWord = ""
+                     var choosenWord = ""
 
+                     // var for array which will store each letter individualy  => individualyLetters = []
+                     var individualyLetters = []
+
+                     // var for number of blank spaces => blankSpaces = ""
+                     var blankSpaces = ""
+
+                     // var for array containing correct guess letters and blank spaces for letters yet to be guessed => fillerLetters = []
+                     var fillerLetters = []
+
+                     // var for the wrong letters guess so far
+                     var wrongLetters=[];
+                        
+                     // var for wins
+                        var wins = 0; 
+
+                     // var for number of guesses left
+                        var availGuesses = 26;
+
+            // 1. pick random word from randomWords and store it in choosenWord
             document.write(choosenWord = Math.floor(Math.random() * randomWords.length));
 
-            document.write(individualLetters = document.getElementById("words").innerHTML = choosenWord.split(""));
-            
+            // 2. split the choosenWord by letter and store it in the array individualLetters hint: split()
+            document.write(individualLetters = choosenWord.split(""));
+
+            // 3. store the number of blank spaces needed for the chosen word by checking individualLetters array and store in blankSpaces
+            document.write(blankSpaces = individualLetters.length)
+
+            // 4. loop over the amount define in blankSpaces and store a blank space "_" in fillerLetters
+            for(var i = 0; i < blankSpaces.length; i++){
+                fillerLetters = blankSpaces.replace(input, "_");
+            }
                    
     </script>
 </body>
